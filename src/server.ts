@@ -19,7 +19,7 @@ app.use(express.json())
 
 // routes
 app.get('/', (req, res)=> {
-    res.status(200).json({message: 'Hello Metaroon!'})
+    res.status(200).json({message: 'Hello Metaroon 2024!'})
     // res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 app.use('/api/v1/items', itemRoutes)
