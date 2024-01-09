@@ -1,9 +1,8 @@
 import express from "express";
-import {ItemController} from "../controllers/item-controller.js";
+import {ItemController} from "../controllers/item-controller";
 
 const router = express.Router()
 
-router.post('/add-item', ItemController.createItem)
-// TODO: Move the all routes from the server.ts to this
+router.post('/add-item', ItemController.createItem);
 
 export default router
