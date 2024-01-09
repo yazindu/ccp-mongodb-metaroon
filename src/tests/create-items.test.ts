@@ -4,6 +4,8 @@ import {ItemController} from "../controllers/item-controller";
 import {connectToMongoDB} from "../configs/mongodb";
 import mongoose from "mongoose";
 import {server} from "../server";
+import dotenv from "dotenv";
+dotenv.config()
 
 jest.mock('uuid', () => {
     return {
@@ -12,7 +14,7 @@ jest.mock('uuid', () => {
 });
 
 beforeAll(async ()=> {
-    await connectToMongoDB('mongodb+srv://stoXmod:5VJbnUadD3lLZPJu@cluster0.avfm1yl.mongodb.net/test?retryWrites=true&w=majority')
+    await connectToMongoDB(process.env.MONGODB_URI as string)
 })
 
 afterAll(async () => {
