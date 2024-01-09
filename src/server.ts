@@ -1,13 +1,14 @@
-import express from 'express'
+import express, {Express} from 'express'
 import itemRoutes from "./routes/item-routes";
 import {connectToMongoDB} from "./configs/mongodb";
 import dotenv from 'dotenv'
 import path from "path";
+import {Server} from "http";
 dotenv.config()
 
 const PORT = 9000
 const app = express()
-let server: any
+let server: Server
 
 // json serialize
 app.use(express.json())
