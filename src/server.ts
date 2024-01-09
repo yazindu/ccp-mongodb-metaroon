@@ -19,20 +19,28 @@ app.use(express.json())
 
 // routes
 app.get('/', (req, res)=> {
-    res.status(200).json({message: 'Hello Metaroon!'})
+    res.status(200).json({message: 'Hello Metaroon 2024!'})
     // res.sendFile(path.join(__dirname, 'public/index.html'));
 })
 app.use('/api/v1/items', itemRoutes)
 
 // Start the express app
-connectToMongoDB('mongodb+srv://stoXmod:5VJbnUadD3lLZPJu@cluster0.avfm1yl.mongodb.net/test?retryWrites=true&w=majority').then(()=> {
-    console.log('✅ Mongodb Connected!')
-    server = app.listen(PORT, ()=> {
-        console.log(`🚀 Server is running on port ${PORT}`)
-    })
-}).catch((ex)=> {
-    console.log('🔴 Connection failed with MongoDB!', ex)
-})
+const mongoUrl = process.env.MONGO_URL;
+
+if (!mongoUrl) {
+    console.error('🔴 MongoDB connection URL is not defined.');
+} else {
+    connectToMongoDB(mongoUrl)
+        .then(() => {
+            console.log('✅ MongoDB Connected!');
+            server = app.listen(PORT, () => {
+                console.log(`🚀 Server is running on port ${PORT}`);
+            });
+        })
+        .catch((ex) => {
+            console.log('🔴 Connection failed with MongoDB!', ex);
+        });
+}
 
 export {app,server}
 
