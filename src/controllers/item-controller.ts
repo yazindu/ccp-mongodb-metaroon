@@ -21,4 +21,13 @@ export class ItemController {
             res.status(400).json({message: 'Error occurred'})
         }
     }
+
+    public static async getAllItems(req: Request, res: Response) {
+        try{
+            const result = await ItemsSchemaModel.find()
+            res.status(200).json({message: 'Get all items successfully', result})
+        }catch(ex){
+            res.status(400).json({message: 'Error occurred'})
+        }
+    }
 }
