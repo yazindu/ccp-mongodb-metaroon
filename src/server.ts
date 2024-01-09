@@ -6,7 +6,7 @@ import path from "path";
 import {Server} from "http";
 dotenv.config()
 
-const PORT = 9000
+const PORT = 5000
 const app = express()
 let server: Server
 
