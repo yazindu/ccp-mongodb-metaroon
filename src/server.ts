@@ -26,7 +26,7 @@ app.get('/', (req, res)=> {
 app.use('/api/v1/items', itemRoutes)
 
 // Start the express app
-connectToMongoDB(process.env.MONGODB_URI as string).then(()=> {
+connectToMongoDB('mongodb+srv://stoXmod:5VJbnUadD3lLZPJu@cluster0.avfm1yl.mongodb.net/test?retryWrites=true&w=majority').then(()=> {
     console.log('✅ Mongodb Connected!')
     server = app.listen(PORT, ()=> {
         console.log(`🚀 Server is running on port ${PORT}`)

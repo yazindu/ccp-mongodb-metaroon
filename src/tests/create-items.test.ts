@@ -14,7 +14,7 @@ jest.mock('uuid', () => {
 });
 
 beforeAll(async ()=> {
-    await connectToMongoDB(process.env.MONGODB_URI as string)
+    await connectToMongoDB('mongodb+srv://stoXmod:5VJbnUadD3lLZPJu@cluster0.avfm1yl.mongodb.net/test?retryWrites=true&w=majority')
 })
 
 afterAll(async () => {
