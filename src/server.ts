@@ -14,9 +14,8 @@ let server: Server
 app.use(express.json())
 
 // Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
-// say hello to metaroon
 
 // routes
 app.get('/', (req, res)=> {
