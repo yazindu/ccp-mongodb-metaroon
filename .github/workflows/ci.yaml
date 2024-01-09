@@ -15,9 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: 'Checkout Repository'
+        with:
+          MONGODB_URI: ${{secrets.MONGODB_URI}}
       - name: 'Install Dependencies'
         run: npm install
       - name: 'Run Tests'
-        with:
-          MONGODB_URI: ${{secrets.MONGODB_URI}}
         run: npm run test
