@@ -18,4 +18,6 @@ jobs:
       - name: 'Install Dependencies'
         run: npm install
       - name: 'Run Tests'
+        with:
+          MONGODB_URI: ${{secrets.MONGODB_URI}}
         run: npm run test
