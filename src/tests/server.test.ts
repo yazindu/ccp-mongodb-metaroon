@@ -1,10 +1,7 @@
 import request from 'supertest';
 import {app, server} from '../server';
-import mongoose from "mongoose";
 
 afterAll(async () => {
-    // disconnect from mongodb
-    await mongoose.disconnect()
     // close the server
     server.close();
 })
