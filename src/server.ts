@@ -25,14 +25,16 @@ app.get('/', (req, res)=> {
 app.use('/api/v1/items', itemRoutes)
 
 // Start the express app
-connectToMongoDB('mongodb+srv://stoXmod:5VJbnUadD3lLZPJu@cluster0.avfm1yl.mongodb.net/test?retryWrites=true&w=majority').then(()=> {
-    console.log('✅ Mongodb Connected!')
-    server = app.listen(PORT, ()=> {
-        console.log(`🚀 Server is running on port ${PORT}`)
+if(process.env.MONGO_URL){
+    connectToMongoDB(process.env.MONGO_URL).then(() => {
+        console.log('✅ Mongodb Connected!')
+        server = app.listen(PORT, () => {
+            console.log(`🚀 Server is running on port ${PORT}`)
+        })
+    }).catch((ex) => {
+        console.log('🔴 Connection failed with MongoDB!', ex)
     })
-}).catch((ex)=> {
-    console.log('🔴 Connection failed with MongoDB!', ex)
-})
+} else console.error("🔴 MONGO_URL is undefined")
 
 export {app,server}
 
